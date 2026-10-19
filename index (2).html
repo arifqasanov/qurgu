@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>44 günlük Vətən müharibəsi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b1426;--bg2:#13213f;--card:rgba(26,42,77,.62);--tx:#f3efe6;--mut:#c9d4ea;--b:#29b6f6;--r:#ef476f;--g:#6fcf97;--y:#f2b84b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1426;--bg2:#13213f;--tx:#f3efe6}}
+:root[data-theme="dark"]{--bg:#0b1426;--bg2:#13213f;--tx:#f3efe6}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box;margin:0}
+body{height:100%;background:radial-gradient(circle at 20% 10%,var(--bg2),var(--bg) 70%);color:var(--tx);font-family:Montserrat,Arial,sans-serif;overflow:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+.slide{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:2.2vh;padding:9vh 7vw 12vh;opacity:0;visibility:hidden;transform:translateX(9%) scale(.97);transition:opacity .8s,transform .8s,visibility .8s;overflow-y:auto}
+.slide.prev{transform:translateX(-9%) scale(.97)}
+.slide.on{opacity:1;visibility:visible;transform:none}
+h1{font-size:clamp(40px,8.4vw,132px);font-weight:800;line-height:1.04}
+h2{font-size:clamp(30px,4.8vw,76px);font-weight:800;line-height:1.1;background:linear-gradient(90deg,var(--tx),var(--y),var(--b),var(--tx));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+.lead{font-size:clamp(16px,2.1vw,34px);line-height:1.4;color:var(--mut);max-width:1300px}
+.tag{font-size:clamp(13px,1.7vw,28px);font-weight:600;letter-spacing:.3em;color:var(--y)}
+.rv{opacity:0}
+.on .rv{animation:rise .9s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*.14s + .15s)}
+.on .pop{animation:pop .9s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--i,0)*.16s + .2s)}
+.ch{display:inline-block;opacity:0}
+.on .ch{animation:letter .7s cubic-bezier(.2,.9,.3,1.4) both;animation-delay:calc(var(--c)*.045s + .2s)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2vw;margin-top:2vh}
+.card{position:relative;background:var(--card);backdrop-filter:blur(8px);border-radius:22px;padding:clamp(18px,2.4vw,40px);border-top:8px solid var(--c);transition:transform .25s,box-shadow .25s;transform-style:preserve-3d;overflow:hidden}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.14) 50%,transparent 60%);transform:translateX(-120%);animation:sweep 5s ease-in-out infinite;animation-delay:calc(var(--i)*.7s)}
+.card:hover{box-shadow:0 20px 60px -10px var(--c)}
+.card h3{font-size:clamp(20px,2.4vw,40px);font-weight:700;color:var(--c);margin-bottom:1.2vh}
+.card p{font-size:clamp(14px,1.6vw,28px);line-height:1.45}
+.card .n{font-size:clamp(14px,1.4vw,22px);font-weight:700;color:var(--c);opacity:.7;margin-bottom:.6vh}
+.big{font-size:clamp(70px,13vw,210px);font-weight:800;line-height:1;color:var(--c);text-shadow:0 0 40px var(--c)}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:3vw;margin-top:3vh}
+.nums p{font-size:clamp(15px,1.9vw,32px);font-weight:600;line-height:1.35}
+.tl{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1.5vw;margin-top:5vh;padding-top:34px}
+.tl::before{content:"";position:absolute;left:0;right:0;top:12px;height:5px;border-radius:3px;background:linear-gradient(90deg,var(--b),var(--y),var(--r));transform:scaleX(0);transform-origin:left}
+.on .tl::before{animation:draw 2.4s ease-out .3s forwards}
+.tl .card::before{content:"";position:absolute;left:24px;top:-34px;width:22px;height:22px;border-radius:50%;background:var(--c);box-shadow:0 0 0 0 var(--c);animation:pulse 2s infinite}
+.tl .card{overflow:visible;margin-top:14px}.tl .card::after{display:none}
+.orb{position:absolute;border-radius:50%;pointer-events:none;z-index:-1}
+.o1{right:6vw;top:10vh;width:clamp(120px,18vw,280px);height:clamp(120px,18vw,280px);background:var(--r);opacity:.85;animation:float 7s ease-in-out infinite}
+.o2{right:20vw;top:32vh;width:clamp(70px,10vw,170px);height:clamp(70px,10vw,170px);background:var(--b);opacity:.85;animation:float 5s ease-in-out infinite reverse}
+.o3{right:5vw;top:46vh;width:clamp(40px,6vw,100px);height:clamp(40px,6vw,100px);background:var(--y);animation:float 6s ease-in-out infinite .5s}
+.ring{position:absolute;right:calc(6vw - 40px);top:calc(10vh - 40px);width:clamp(200px,26vw,360px);height:clamp(200px,26vw,360px);border:3px dashed var(--y);border-radius:50%;animation:spin 18s linear infinite;z-index:-1;opacity:.6}
+.flag{position:fixed;left:0;right:0;bottom:0;z-index:3;display:flex;flex-direction:column;pointer-events:none}
+.flag i{height:clamp(6px,1.1vh,12px);transform:scaleX(0);transform-origin:left;animation:draw 1.4s ease-out forwards}
+.flag i:nth-child(1){background:#00b5e2}.flag i:nth-child(2){background:#ef3340;animation-delay:.2s}.flag i:nth-child(3){background:#509e2f;animation-delay:.4s}
+.badge{display:inline-flex;align-items:center;gap:12px;align-self:flex-start;padding:12px 26px;border-radius:40px;background:linear-gradient(90deg,var(--b),var(--g));color:#0b1426;font-weight:700;font-size:clamp(14px,1.7vw,26px);box-shadow:0 0 0 0 var(--b);animation:pulse 2.6s infinite}
+.mts{position:absolute;left:0;right:0;bottom:0;width:100%;height:38vh;z-index:-1;opacity:.9}
+.mts .m1{animation:drift 14s ease-in-out infinite alternate}.mts .m2{animation:drift 9s ease-in-out infinite alternate-reverse}
+.pole{position:absolute;right:12vw;bottom:8vh;width:6px;height:30vh;background:var(--tx);border-radius:3px;z-index:-1}
+.pole b{position:absolute;left:6px;top:0;width:clamp(70px,9vw,140px);height:clamp(46px,6vw,90px);background:linear-gradient(#00b5e2 33%,#ef3340 33% 66%,#509e2f 66%);transform-origin:left;animation:wave 1.6s ease-in-out infinite;border-radius:0 6px 6px 0}
+.on .pole{animation:flagup 2.2s cubic-bezier(.2,.8,.2,1) both}
+#hud{position:fixed;z-index:10;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 2.2vh);display:flex;justify-content:center;align-items:center;gap:14px;pointer-events:none}
+#hud *{pointer-events:auto}
+#hud button{background:rgba(26,42,77,.8);color:var(--tx);border:1px solid rgba(255,255,255,.2);width:44px;height:44px;border-radius:50%;font-size:20px;cursor:pointer;transition:transform .2s,background .2s}
+#hud button:hover{transform:scale(1.15);background:var(--b);color:#0b1426}
+#dots{display:flex;gap:9px}
+#dots i{width:10px;height:10px;border-radius:5px;background:rgba(255,255,255,.3);cursor:pointer;transition:all .4s}
+#dots i.on{width:34px;background:var(--y)}
+#bar{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:5px;background:linear-gradient(90deg,var(--b),var(--y),var(--r));z-index:31;transition:width .8s}
+#by{position:fixed;z-index:10;left:2vw;bottom:calc(env(safe-area-inset-bottom,0px) + 3.2vh);font-size:clamp(11px,1.1vw,16px);color:var(--mut);letter-spacing:.08em}
+#cnt{position:fixed;z-index:10;right:2vw;bottom:calc(env(safe-area-inset-bottom,0px) + 3.2vh);font-size:clamp(11px,1.1vw,16px);color:var(--mut)}
+@keyframes rise{from{opacity:0;transform:translateY(60px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.2) rotate(-12deg)}to{opacity:1;transform:none}}
+@keyframes letter{from{opacity:0;transform:translateY(80px) rotate(14deg)}to{opacity:1;transform:none}}
+@keyframes shine{to{background-position:300% 0}}
+@keyframes sweep{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+@keyframes float{50%{transform:translateY(-28px) scale(1.06)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes draw{to{transform:scaleX(1)}}
+@keyframes pulse{70%{box-shadow:0 0 0 18px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@keyframes drift{to{transform:translateX(-60px)}}
+@keyframes wave{50%{transform:skewY(7deg) scaleX(.93)}}
+@keyframes flagup{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0)}}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+<div id="bar"></div>
+<main id="deck"></main>
+<div class="flag"><i></i><i></i><i></i></div>
+<div id="by">Hazırladı: Səid Əhədov</div>
+<div id="cnt"></div>
+<div id="hud"><button id="pv" aria-label="Əvvəlki">‹</button><div id="dots"></div><button id="nx" aria-label="Növbəti">›</button><button id="fs" aria-label="Tam ekran">⛶</button></div>
+<script>
+var C=["#29b6f6","#ef476f","#6fcf97","#f2b84b","#29b6f6"];
+var S=[
+{t:"cover"},
+{t:"cards",title:"Müharibənin səbəbləri",lead:"Otuz il ərzində Azərbaycanın ayrılmaz hissəsi olan Qarabağ işğal altında qaldı.",items:[
+["Erməni işğalı","1990-cı illərin əvvəlində Dağlıq Qarabağ və ətraf yeddi rayon işğal edildi, yüz minlərlə azərbaycanlı doğma yurdundan didərgin düşdü."],
+["BMT qətnamələri","Təhlükəsizlik Şurası 1993-cü ildə dörd qətnamə qəbul edərək işğalçı qüvvələrin torpaqlarımızdan dərhal çıxarılmasını tələb etdi."],
+["Həll olunmayan münaqişə","Ermənistan beynəlxalq tələbləri otuz il boyu yerinə yetirmədi və danışıqlar heç bir real nəticə vermədi."]]},
+{t:"cards",title:"Müharibənin başlanması",lead:"2020-ci il sentyabrın 27-də səhər saatlarında Ermənistan silahlı qüvvələri cəbhə boyu təxribata əl atdı.",items:[
+["Təxribata cavab","Düşmən Azərbaycan mövqelərini və yaşayış məntəqələrini atəşə tutdu, mülki əhali arasında itkilər oldu."],
+["Əks-hücum","Azərbaycan Ordusu cavab olaraq cəbhənin bütün istiqamətlərində əks-hücum əməliyyatına başladı."],
+["Xalqın birliyi","Ölkə Ali Baş Komandan İlham Əliyevin ətrafında sıx birləşdi və «Qarabağ Azərbaycandır!» şüarı hər yerdə səsləndi."]]},
+{t:"nums",title:"Rəqəmlərlə müharibə",lead:"Qısa müddətdə əldə olunan nəticələr Azərbaycan Ordusunun peşəkarlığını göstərdi.",items:[
+[44,"","gün davam edən qətiyyətli və uğurlu döyüşlər."],[300,"+","yaşayış məntəqəsi və strateji yüksəklik düşməndən azad edildi."],[2900,"+","şəhid verdik, onların xatirəsi əbədi yaşayacaq."]]},
+{t:"tl",title:"Azad olunan şəhərlər",lead:"Hər yeni qələbə xalqımızın əzmini və ordumuzun gücünü bir daha sübut etdi.",items:[
+["4 oktyabr","Cəbrayıl şəhəri düşməndən təmizləndi."],["17 oktyabr","Füzuli şəhəri yenidən Azərbaycanın oldu."],["20 oktyabr","Zəngilan şəhəri azad edildi."],["25 oktyabr","Qubadlı şəhərində Azərbaycan bayrağı qaldırıldı."],["8 noyabr","Şuşa şəhəri tarixi qələbə ilə azad olundu."]]},
+{t:"cards",mt:1,title:"Şuşanın azad edilməsi",lead:"Noyabrın 8-də Şuşanın azad olunması müharibənin taleyini həll edən ən böyük qələbə oldu.",items:[
+["Mədəniyyət beşiyi","Şuşa muğamın, musiqinin və poeziyanın paytaxtı sayılır, bu şəhərdə hər daşın öz tarixi var."],
+["Çətin relyef","Sıldırım qayalıqlar şəhəri əlçatmaz edirdi, lakin əsgərlərimiz misilsiz qəhrəmanlıqla irəlilədi."],
+["Zəfər Günü","Noyabrın 8-i hər il Azərbaycanda böyük qürur və ruh yüksəkliyi ilə Zəfər Günü kimi qeyd olunur."]]},
+{t:"cards",title:"10 noyabr bəyanatı",lead:"Noyabrın 10-da imzalanan üçtərəfli bəyanatla müharibə başa çatdı və işğalçı Ermənistan məğlubiyyəti qəbul etdi.",items:[
+["Ağdam","20 noyabrda Ağdam rayonu otuz illik işğaldan sonra Azərbaycana qaytarıldı."],
+["Kəlbəcər","25 noyabrda Kəlbəcər rayonu xalqımıza təhvil verildi və dağlıq diyarda sevinc yaşandı."],
+["Laçın","1 dekabrda Laçın rayonu azad olundu və Zəfərin sülh mərhələsi başa çatdı."]]},
+{t:"cards",end:1,title:"Zəfərin mənası",lead:"Bu qələbə Azərbaycan xalqının tarixində yeni və qürurlu bir səhifə açdı.",items:[
+["Ədalətin bərpası","Beynəlxalq hüquq və BMT qətnamələri otuz illik gecikmədən sonra nəhayət öz təsdiqini tapdı."],
+["Şəhidlərə ehtiram","Şəhidlərimizin və qazilərimizin xatirəsi xalqımızın qəlbində həmişə yaşayacaq."],
+["Quruculuq dövrü","Azad edilmiş torpaqlarda «Böyük Qayıdış» proqramı çərçivəsində yeni yollar, evlər və şəhərlər salınır."]]}
+];
+var MT='<svg class="mts" viewBox="0 0 1200 300" preserveAspectRatio="none"><path class="m1" d="M-80 300V170l120-70 110 60 140-110 150 100 120-60 160 90 130-80 200 100v200z" fill="#1a2a4d"/><path class="m2" d="M-80 300V230l150-60 130 50 160-90 160 100 150-70 170 80 200-40v200z" fill="#0f1b36"/></svg><div class="pole"><b></b></div>';
+function split(s){var c=0;return s.split(" ").map(function(w){return '<span style="display:inline-block;white-space:nowrap">'+w.split("").map(function(ch){return '<span class="ch" style="--c:'+(c++)+'">'+ch+'</span>'}).join("")+'</span>'}).join(" ")}
+function cards(a,cls){return a.map(function(x,i){return '<div class="card rv" style="--c:'+C[i%4]+';--i:'+(i+2)+'"><div class="n">0'+(i+1)+'</div><h3>'+x[0]+'</h3><p>'+x[1]+'</p></div>'}).join("")}
+function build(s){
+ if(s.t=="cover")return '<div class="ring"></div><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="tag rv">27 SENTYABR – 10 NOYABR 2020</div><h1>'+split("44 günlük")+'<br>'+split("Vətən müharibəsi")+'</h1><p class="lead rv" style="--i:8">Otuz illik həsrətin sonu: Azərbaycan xalqının və ordusunun şanlı Zəfər salnaməsi.</p><div class="badge rv" style="--i:10">✍ Hazırladı: Səid Əhədov</div>';
+ var h='<div class="orb o1" style="opacity:.25;width:130px;height:130px;right:5vw;top:8vh"></div><h2 class="rv">'+s.title+'</h2><p class="lead rv" style="--i:1">'+s.lead+'</p>';
+ if(s.t=="cards")h+='<div class="grid">'+cards(s.items)+'</div>';
+ if(s.t=="tl")h+='<div class="tl">'+cards(s.items)+'</div>';
+ if(s.t=="nums")h+='<div class="nums">'+s.items.map(function(x,i){return '<div class="pop" style="--i:'+(i+2)+';--c:'+C[i]+'"><div class="big"><span data-n="'+x[0]+'">0</span>'+x[1]+'</div><p>'+x[2]+'</p></div>'}).join("")+'</div>';
+ if(s.mt)h+=MT;
+ if(s.end)h+='<div class="badge rv" style="--i:6">✍ Hazırladı: Səid Əhədov</div>';
+ return h}
+var deck=document.getElementById("deck"),dots=document.getElementById("dots"),els=[],cur=-1;
+S.forEach(function(s,i){var e=document.createElement("section");e.className="slide";e.innerHTML=build(s);deck.appendChild(e);els.push(e);var d=document.createElement("i");d.onclick=function(){go(i)};dots.appendChild(d)});
+function count(e){e.querySelectorAll("[data-n]").forEach(function(n){var T=+n.dataset.n,t0=performance.now();(function f(t){var p=Math.min(1,(t-t0)/2000);n.textContent=Math.round(T*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)})}
+function go(n){if(n<0||n>=els.length||n==cur)return;var old=cur;cur=n;
+ els.forEach(function(e,i){e.classList.remove("on");e.classList.toggle("prev",i<n)});
+ void deck.offsetWidth;els[n].scrollTop=0;els[n].classList.add("on");
+ [].forEach.call(dots.children,function(d,i){d.classList.toggle("on",i==n)});
+ document.getElementById("bar").style.width=((n+1)/els.length*100)+"%";
+ document.getElementById("cnt").textContent=(n+1)+" / "+els.length;
+ count(els[n]);fwOn=!!S[n].end;if(fwOn)burst(3)}
+document.getElementById("nx").onclick=function(){go(cur+1)};document.getElementById("pv").onclick=function(){go(cur-1)};
+document.getElementById("fs").onclick=function(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()};
+addEventListener("keydown",function(e){if(["ArrowRight","ArrowDown"," ","PageDown"].indexOf(e.key)>-1){e.preventDefault();go(cur+1)}if(["ArrowLeft","ArrowUp","PageUp"].indexOf(e.key)>-1){e.preventDefault();go(cur-1)}if(e.key=="f")document.getElementById("fs").click()});
+var tx=0;addEventListener("touchstart",function(e){tx=e.touches[0].clientX},{passive:true});addEventListener("touchend",function(e){var d=e.changedTouches[0].clientX-tx;if(Math.abs(d)>60)go(cur+(d<0?1:-1))});
+var lw=0;addEventListener("wheel",function(e){var s=els[cur];if(Date.now()-lw<900||Math.abs(e.deltaY)<30)return;if(s.scrollHeight>s.clientHeight+4)return;lw=Date.now();go(cur+(e.deltaY>0?1:-1))},{passive:true});
+els.forEach(function(s){s.addEventListener("mousemove",function(e){var c=e.target.closest&&e.target.closest(".card");if(!c)return;var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform="perspective(700px) rotateY("+x*14+"deg) rotateX("+-y*14+"deg) translateY(-6px)"});s.addEventListener("mouseout",function(e){var c=e.target.closest&&e.target.closest(".card");if(c)c.style.transform=""})});
+/* canvas: particles + fireworks */
+var cv=document.getElementById("fx"),cx=cv.getContext("2d"),W,H,P=[],F=[],fwOn=false,mx=0,my=0;
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}rs();addEventListener("resize",rs);
+for(var i=0;i<80;i++)P.push({x:Math.random()*2000,y:Math.random()*1200,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*2+1});
+addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY});
+function burst(k){for(var j=0;j<k;j++){var x=W*(.15+Math.random()*.7),y=H*(.12+Math.random()*.4),c=C[Math.floor(Math.random()*4)];for(var i=0;i<60;i++){var a=Math.PI*2*i/60,v=2+Math.random()*4;F.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:1,c:c})}}}
+setInterval(function(){if(fwOn)burst(1)},900);
+(function loop(){cx.clearRect(0,0,W,H);
+ P.forEach(function(p,i){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+  var dx=p.x-mx,dy=p.y-my,d=Math.sqrt(dx*dx+dy*dy);if(d<140){p.x+=dx/d*1.5;p.y+=dy/d*1.5}
+  cx.fillStyle="rgba(242,184,75,.7)";cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fill();
+  for(var j=i+1;j<P.length;j++){var q=P[j],ex=p.x-q.x,ey=p.y-q.y,e=ex*ex+ey*ey;if(e<12000){cx.strokeStyle="rgba(41,182,246,"+(.25*(1-e/12000))+")";cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}});
+ F=F.filter(function(f){f.x+=f.vx;f.y+=f.vy;f.vy+=.05;f.vx*=.985;f.l-=.014;cx.globalAlpha=Math.max(f.l,0);cx.fillStyle=f.c;cx.beginPath();cx.arc(f.x,f.y,2.6,0,7);cx.fill();return f.l>0});cx.globalAlpha=1;
+ requestAnimationFrame(loop)})();
+go(0);
+</script>
+</body>
+</html>
